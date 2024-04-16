@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
@@ -16,9 +15,8 @@ def histogram( f ):
 	plt.ylabel( "#Intensities" )
 	plt.show( )
 
-def main( ):
-	img = cv2.imread( "Indoor_Low_Contrast.bmp", -1 )
-	cv2.imshow( "Original Image", img )
-	histogram( img )
+img = cv2.imread( "../dataset/over_exposure_sample.jpg", 0)
+cv2.imshow( "Original Image", img )
+histogram( img )
 
-main( )
+cv2.waitKey( 0 )

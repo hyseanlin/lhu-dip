@@ -13,7 +13,7 @@ def onMouse( event, x, y, flags, param ):
 		print( "(R, G, B) = (%3d, %3d, %3d)" % 
 			   ( img[x, y, 2], img[x, y, 1], img[x, y, 0] ) )		
 
-filename = input( "Please enter filename: " )
+filename = "..\dataset\Lena.ppm" # input( "Please enter filename: " )
 img = cv2.imread( filename, -1 )
 cv2.namedWindow( filename )
 cv2.setMouseCallback( filename, onMouse )

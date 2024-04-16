@@ -6,7 +6,7 @@ def image_negative( f ):
 	return g
 
 def main( ):
-	img1 = cv2.imread( "Lenna.bmp", -1 )
+	img1 = cv2.imread( "../dataset/lena.pgm", -1 )
 	img2 = image_negative( img1 )
 	cv2.imshow( "Original Image", img1 )	
 	cv2.imshow( "Image Negative", img2 )

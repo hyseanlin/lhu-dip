@@ -17,11 +17,11 @@ def image_formation_model( f, x0, y0, sigma ):
 	return g
 	
 def main( ):
-	img = cv2.imread( "Monet.bmp", -1 )
+	img = cv2.imread( "../dataset/lena.ppm", -1 )
 	nr, nc = img.shape[:2]
 	x0 = nr // 2
 	y0 = nc // 2
-	sigma = 400
+	sigma = 100
 	img2 = image_formation_model( img, x0, y0, sigma )
 	cv2.imshow( "Original Image", img )
 	cv2.imshow( "Image Formation Model", img2 )
