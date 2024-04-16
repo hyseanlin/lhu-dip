@@ -11,7 +11,7 @@ def image_downsampling( f, sampling_rate ):
 	return g
 	
 def main( ):
-	img1 = cv2.imread( "Barbara.bmp", -1 )
+	img1 = cv2.imread( "../dataset/lena.pgm", -1 )
 	img2 = image_downsampling( img1, 2 )		
 	img3 = image_downsampling( img1, 4 )
 	cv2.imshow( "Original Image", img1 )

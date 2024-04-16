@@ -20,14 +20,14 @@ def gamma_correction( f, gamma = 2.0 ):
 	return g
 	
 def main( ):
-	img = cv2.imread( "Museum.bmp", 0 )
-	img1 = gamma_correction( img, 0.1 )
-	img2 = gamma_correction( img, 0.2 )
-	img3 = gamma_correction( img, 0.5 )
+	img = cv2.imread( "../dataset/over_exposure_sample.jpg")
+	img1 = gamma_correction( img, 6 )
+	img2 = gamma_correction( img, 7 )
+	img3 = gamma_correction( img, 8 )
 	cv2.imshow( "Original Image", img )	
-	cv2.imshow( "Gamma = 0.1", img1 )
-	cv2.imshow( "Gamma = 0.2", img2 )
-	cv2.imshow( "Gamma = 0.5", img3 )		
+	cv2.imshow( "Gamma = 6", img1 )
+	cv2.imshow( "Gamma = 7", img2 )
+	cv2.imshow( "Gamma = 8", img3 )		
 	cv2.waitKey( 0 )
 
 main( )
