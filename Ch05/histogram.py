@@ -15,8 +15,12 @@ def histogram( f ):
 	plt.ylabel( "#Intensities" )
 	plt.show( )
 
-img = cv2.imread( "../dataset/over_exposure_sample.jpg", 0)
-cv2.imshow( "Original Image", img )
-histogram( img )
 
-cv2.waitKey( 0 )
+def main():
+    img = cv2.imread( "../dataset/i30p5.jpg", 0)
+    cv2.imshow( "Original Image", img )
+    histogram( img )
+    cv2.waitKey( 0 )
+    cv2.destroyAllWindows()
+
+main()

@@ -19,12 +19,14 @@ def beta_correction( f, a = 2.0, b = 2.0 ):
 	return g
 
 def main( ):
-	img = cv2.imread( "Building.bmp", 0 )
+	img = cv2.imread( "../dataset/lena.ppm", 0 )
 	img1 = beta_correction( img, a = 0.5, b = 0.5 )
 	img2 = beta_correction( img, a = 2.0, b = 2.0 )
 	cv2.imshow( "Original Image", img )	
 	cv2.imshow( "Beta Correction (a = b = 0.5)", img1 )
 	cv2.imshow( "Beta Correction (a = b = 2.0)", img2 )	
-	cv2.waitKey( 0 )
-
+	cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+    
 main( )

@@ -29,7 +29,7 @@ def visualize_gradients(image):
     plt.show()
 
 # Load an example image
-image_path = '../dataset/lena.pgm'  # Provide the path to your image
+image_path = '../dataset/bw02.bmp'  # Provide the path to your image
 image = cv2.imread(image_path)
 cv2.imshow('Original Image', image)
 
