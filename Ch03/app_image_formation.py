@@ -4,18 +4,17 @@ import streamlit as st
 from PIL import Image
 
 def image_formation_model(f, x0, y0, sigma):
-    g = f.copy()
     nr, nc = f.shape[:2]
-    illumination = np.zeros([nr, nc], dtype='float32')
-    for x in range(nr):
-        for y in range(nc):
-            illumination[x, y] = np.exp(-((x - x0) ** 2 + (y - y0) ** 2) /
-                                        (2 * sigma * sigma))
-    for x in range(nr):
-        for y in range(nc):
-            for k in range(3):
-                val = round(illumination[x, y] * f[x, y, k])
-                g[x, y, k] = np.uint8(val)
+    
+    # Create coordinate grids
+    x = np.arange(nr).reshape(-1, 1)
+    y = np.arange(nc).reshape(1, -1)
+    
+    # Calculate the illumination matrix
+    illumination = np.exp(-((x - x0) ** 2 + (y - y0) ** 2) / (2 * sigma ** 2))
+    
+    # Apply illumination to each color channel
+    g = (illumination[..., np.newaxis] * f).astype(np.uint8)
     return g
 
 def main():
