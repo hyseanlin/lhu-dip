@@ -17,6 +17,5 @@ def main( ):
 	cv2.imshow( "Original Image", img1 )
 	cv2.imshow( "Forward Mapping", img2 )
 	cv2.waitKey( 0 )
-	cv2.imwrite("Baboon_mapped.bmp", img2)
 
 main( )
