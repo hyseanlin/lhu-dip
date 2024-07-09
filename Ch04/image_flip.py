@@ -8,3 +8,5 @@ cv2.imshow( "Original Image", img )
 cv2.imshow( "Flip Vertically", img1 )
 cv2.imshow( "Flip Horizontally", img2 )
 cv2.waitKey( 0 )
+
+cv2.destroyAllWindows()
