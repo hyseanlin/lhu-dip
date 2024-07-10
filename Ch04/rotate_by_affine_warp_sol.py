@@ -21,12 +21,15 @@ src_points = np.float32([
     [w // 2, h * 3 // 4]
 ])
 
-
-dst_points = np.float32([
-    [w *3 // 4, h // 4],
-    [w *3 // 4, h * 3 // 4],
-    [w // 4, h // 2]
-])
+angle = -90
+center = (w // 2, h // 2)
+rotation_matrix = cv2.getRotationMatrix2D(center, angle, 1)
+dst_points = cv2.transform(np.array([src_points]), rotation_matrix)
+# dst_points = np.float32([
+#     [w *3 // 4, h // 4],
+#     [w *3 // 4, h * 3 // 4],
+#     [w // 4, h // 2]
+# ])
 
 # Compute the affine transformation matrix
 M = cv2.getAffineTransform(src_points, dst_points)
