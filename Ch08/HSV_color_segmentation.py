@@ -16,10 +16,11 @@ def HSV_color_segmentation( f, H1, H2, S1, S2, V1, V2 ):
 	return g
 
 def main( ):
-	img1 = cv2.imread( "Flower.bmp", -1 )
-	img2 = HSV_color_segmentation( img1, 30, 70, 30, 100, 30, 100 )
-	cv2.imshow( "Original Image", img1 )
-	cv2.imshow( "HSV Color Segmentation", img2 )
-	cv2.waitKey( 0 )
+    img1 = cv2.imread( "Flower.bmp", -1 )
+    img2 = HSV_color_segmentation( img1, 30, 70, 30, 100, 30, 100 )
+    cv2.imshow( "Original Image", img1 )
+    cv2.imshow( "HSV Color Segmentation", img2 )
+    cv2.waitKey( 0 )
+    cv2.destroyAllWindows()
 
 main( )

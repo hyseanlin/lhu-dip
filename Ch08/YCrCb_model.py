@@ -11,14 +11,14 @@ def YCrCb_model( f, channel ):
 		return ycrcb[:,:,2]
 
 def main( ):
-	img = cv2.imread( "Rose.bmp", -1 )
-	Y  = YCrCb_model( img, 1 )
-	Cr = YCrCb_model( img, 2 )
-	Cb = YCrCb_model( img, 3 )
-	cv2.imshow( "Original Image", img )
-	cv2.imshow( "Y", Y )
-	cv2.imshow( "Cr", Cr )
-	cv2.imshow( "Cb", Cb )
-	cv2.waitKey( 0 )
-
+    img = cv2.imread( "Rose.bmp", -1 )
+    Y  = YCrCb_model( img, 1 )
+    Cr = YCrCb_model( img, 2 )
+    Cb = YCrCb_model( img, 3 )
+    cv2.imshow( "Original Image", img )
+    cv2.imshow( "Y", Y )
+    cv2.imshow( "Cr", Cr )
+    cv2.imshow( "Cb", Cb )
+    cv2.waitKey( 0 )
+    cv2.destroyAllWindows()
 main( )
