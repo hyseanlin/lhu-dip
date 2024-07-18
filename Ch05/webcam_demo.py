@@ -1,6 +1,23 @@
 import cv2
 import numpy as np
 import scipy.special as special
+import matplotlib.pyplot as plt
+
+def histogram( f ):
+    plt.clf()
+    if f.ndim != 3:
+        hist = cv2.calcHist( [f], [0], None, [256], [0,256] )
+        plt.plot( hist )
+    else:
+        color = ( 'b', 'g', 'r' )
+        for i, col in enumerate( color ):
+            hist = cv2.calcHist( f, [i], None, [256], [0,256] )
+            plt.plot( hist, color = col )
+    plt.xlim( [0,256] )
+    plt.xlabel( "Intensity" )
+    plt.ylabel( "#Intensities" )
+    plt.pause(0.001)
+
 
 def beta_correction(f, a=2.0, b=2.0):
     # Create the lookup table
@@ -31,7 +48,22 @@ while True:
         break
 
     if beta_enabled:    
-        frame = beta_correction(frame)
+        # Convert the image from BGR to YCrCb color space
+        ycrcb = cv2.cvtColor(frame, cv2.COLOR_BGR2YCrCb)
+        
+        # Split the channels
+        y, cr, cb = cv2.split(ycrcb)
+        
+        # Equalize the histogram of the Y channel
+        y_eq = cv2.equalizeHist(y)
+        
+        # Merge the equalized Y channel back with the Cr and Cb channels
+        ycrcb_eq = cv2.merge([y_eq, cr, cb])
+        
+        # Convert the image back to BGR color space
+        frame = cv2.cvtColor(ycrcb_eq, cv2.COLOR_YCrCb2BGR)
+
+    histogram(frame)
 
     # Display the resulting frame
     cv2.imshow('Webcam', frame)
