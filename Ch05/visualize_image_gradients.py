@@ -30,7 +30,7 @@ def visualize_gradient_direction(img, grad_x, grad_y):
     vis_img = img.copy()
     
     # Parameters for arrow visualization
-    step = 8  # Distance between arrows
+    step = 16  # Distance between arrows
     scale = 0.1  # Scale for arrow length
 
     for y in range(0, h, step):
@@ -54,7 +54,7 @@ def visualize_gradient_direction(img, grad_x, grad_y):
     return vis_img
 
 def main():
-    img = cv2.imread("black_8bit.bmp", cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread("Lenna.bmp", cv2.IMREAD_GRAYSCALE)
     grad_x = Sobel_gradient(img, 1)
     grad_y = Sobel_gradient(img, 2)
     g = Sobel_gradient(img, 3)

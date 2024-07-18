@@ -4,7 +4,9 @@ import cv2
 def unsharp_masking( f, k = 1.0 ):
 	g = f.copy( )
 	nr, nc = f.shape[:2]
+    # 平滑後的 f
 	f_avg = cv2.GaussianBlur( f, ( 15, 15 ), 0 )
+    
 	for x in range( nr ):
 		for y in range( nc ):
 			g_mask = int( f[x,y] ) - int( f_avg[x,y] ) 
