@@ -50,14 +50,14 @@ def HSI_model( f, channel ):
 	return g
 	
 def main( ):
-	img = cv2.imread( "Rose.bmp", -1 )
-	H = HSI_model( img, 1 )
-	S = HSI_model( img, 2 )
-	I = HSI_model( img, 3 )
-	cv2.imshow( "Original Image", img )
-	cv2.imshow( "Hue", H )
-	cv2.imshow( "Saturation", S )
-	cv2.imshow( "Intensity", I )
-	cv2.waitKey( 0 )
+    img = cv2.imread( "Rose.bmp", -1 )
+    H = HSI_model( img, 1 )
+    S = HSI_model( img, 2 )
+    I = HSI_model( img, 3 )
+    cv2.imshow( "Original Image", img )
+    cv2.imshow( "Hue", H )
+    cv2.imshow( "Saturation", S )
+    cv2.imshow( "Intensity", I )
+    cv2.waitKey( 0 )
 
 main( )

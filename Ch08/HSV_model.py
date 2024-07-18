@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 def HSV_model( f, channel ):
-	hsv = cv2.cvtColor( f, cv2.COLOR_BGR2HSV )
+	hsv = cv2.cvtColor( f, cv2.COLOR_BGR2HSV)
 	if channel == 1:	# Hue
 		return hsv[:,:,0]
 	elif channel == 2:	# Saturation
