@@ -3,6 +3,15 @@ import cv2
 import numpy as np
 from PIL import Image
 
+def draw_polylines_with_text(image, points, color, thinkness=3, label='p'):
+    points = points.astype(np.int32)
+    # draw polines
+    cv2.polylines( image, [points], True, color, thinkness)
+    # draw text
+    for i in range(points.shape[0]):
+        cv2.putText(image, f'{label}{i}', points[i], cv2.FONT_HERSHEY_PLAIN, 5.0, color, thinkness)
+
+
 # Streamlit app title
 st.title("Affine Transformation App")
 
@@ -35,16 +44,16 @@ if uploaded_file is not None:
     st.sidebar.write("Enter the destination points:")
     dst_points = []
     dst_points.append([
-        st.sidebar.slider('Destination point 1 - x:', min_value=0, max_value=w, value=w // 5),
-        st.sidebar.slider('Destination point 1 - y:', min_value=0, max_value=h, value=h // 5)
+        st.sidebar.slider('Destination point 1 - x:', min_value=0, max_value=w, value=w // 4),
+        st.sidebar.slider('Destination point 1 - y:', min_value=0, max_value=h, value=h // 4)
     ])
     dst_points.append([
-        st.sidebar.slider('Destination point 2 - x:', min_value=0, max_value=w, value=w * 4 // 5),
-        st.sidebar.slider('Destination point 2 - y:', min_value=0, max_value=h, value=h // 5)
+        st.sidebar.slider('Destination point 2 - x:', min_value=0, max_value=w, value=w * 3 // 4),
+        st.sidebar.slider('Destination point 2 - y:', min_value=0, max_value=h, value=h // 4)
     ])
     dst_points.append([
         st.sidebar.slider('Destination point 3 - x:', min_value=0, max_value=w, value=w // 2),
-        st.sidebar.slider('Destination point 3 - y:', min_value=0, max_value=h, value=h * 4 // 5)
+        st.sidebar.slider('Destination point 3 - y:', min_value=0, max_value=h, value=h * 3 // 4)
     ])
 
     # Convert to np.float32
@@ -57,10 +66,8 @@ if uploaded_file is not None:
     # Apply the affine transformation
     transformed_image = cv2.warpAffine(image, M, (w, h))
 
-    src_points = src_points.astype(np.int32)
-    cv2.polylines( image, [src_points], True, ( 255, 0, 0 ), 4)
-    dst_points = dst_points.astype(np.int32)
-    cv2.polylines( image, [dst_points], True, ( 0, 255, 0 ), 4)
+    draw_polylines_with_text(image, src_points, (255, 0, 0), 4, 's') # source points
+    draw_polylines_with_text(image, dst_points, (0, 0, 255), 3, 'd') # target points
 
     # Display the uploaded image
     st.image(image, channels="BGR", caption="Uploaded Image")
